@@ -351,11 +351,14 @@ body {
   border-radius: 15px;
   margin-bottom: 1.5rem;
   display: flex;
-  align-items: center;
   justify-content: center;
   color: var(--text-light);
   font-size: 1rem;
   text-align: center;
+}
+.product-image img{
+    width: 100%;
+    border-radius: 15px;
 }
 
 .product-name {
