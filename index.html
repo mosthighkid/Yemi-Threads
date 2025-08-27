@@ -49,26 +49,36 @@
     <!-- Bestsellers Section -->
     <section class="section bestsellers" id="bestsellers">
         <div class="container">
-            <h2 class="section-title fade-in-up">Our Bestsellers</h2>
+            <h2 class="section-title fade-in-up auto-blur">Our Bestsellers</h2>
             <div class="product-grid">
-                <div class="product-card fade-in-up">
+                <div class="product-card fade-in-up auto-fade">
                     <div class="product-image">Crochet Tote Bag Image Placeholder</div>
                     <h3 class="product-name">Crochet Tote Bag</h3>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <div class="product-card fade-in-up">
+                <div class="product-card fade-in-up auto-fade">
                     <div class="product-image">Crochet Cat Beanie Image Placeholder</div>
                     <h3 class="product-name">Crochet Cat Beanie</h3>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <div class="product-card fade-in-up">
+                <div class="product-card fade-in-up auto-fade">
                     <div class="product-image">Crochet Bucket Hat Image Placeholder</div>
                     <h3 class="product-name">Crochet Bucket Hat</h3>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <div class="product-card fade-in-up">
+                <div class="product-card fade-in-up auto-fade">
                     <div class="product-image">Crochet Phone Pouch Image Placeholder</div>
                     <h3 class="product-name">Crochet Phone Pouch</h3>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card fade-in-up auto-fade">
+                    <div class="product-image">Crochet Bikinis Image Placeholder</div>
+                    <h3 class="product-name">Crochet Bikinis</h3>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card fade-in-up auto-fade">
+                    <div class="product-image">Crochet Cardigans/Sweaters Image Placeholder</div>
+                    <h3 class="product-name">Crochet Cardigans/Sweaters</h3>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
@@ -84,7 +94,7 @@
                     <p>Stylish crochet bags and accessories for your perfect look.</p>
                     <a href="#" class="cta-button">Shop Now</a>
                 </div>
-                <div class="sale-image fade-in-up">
+                <div class="sale-image fade-in-up fade-in-right">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e691b5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-family='Arial'%3ESale Products%3C/text%3E%3C/svg%3E" alt="Sale Products">
                 </div>
             </div>
@@ -95,14 +105,14 @@
     <section class="section info-section" id="about">
         <div class="container">
             <div class="info-container">
-                <div class="info-text fade-in-up">
+                <div class="info-text fade-in-up auto-blur">
                     <h3>Loved by Crochet Lovers</h3>
                     <p>"The quality and attention to detail in every piece is remarkable. I've never received so many compliments on my accessories before. Yemi Threads has become my go-to for unique, handmade pieces that truly stand out."</p>
                 </div>
                 <div class="info-image fade-in-up">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 300 250'%3E%3Crect width='300' height='250' fill='%23f4a3c7'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='14' font-family='Arial'%3ECrochet Aesthetic%3C/text%3E%3C/svg%3E" alt="Crochet Aesthetic">
                 </div>
-                <div class="info-text fade-in-up">
+                <div class="info-text fade-in-up auto-blur">
                     <h3>Ready to glow like never before?</h3>
                     <p>Each piece is meticulously handcrafted using premium yarns and techniques passed down through generations. Our commitment to excellence ensures that every item you receive is not just beautiful, but built to last and cherish for years to come.</p>
                 </div>
@@ -123,19 +133,58 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.remove('active');
+        // Simple and reliable hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get menu elements with error checking
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Verify elements exist before proceeding
+            if (!hamburger || !mobileMenu) {
+                console.error('Mobile menu elements not found');
+                return;
             }
+            
+            console.log('Mobile menu elements found and ready');
+            
+            // Simple toggle function
+            function toggleMenu() {
+                const isActive = mobileMenu.classList.contains('active');
+                
+                if (isActive) {
+                    mobileMenu.classList.remove('active');
+                    console.log('Menu closed');
+                } else {
+                    mobileMenu.classList.add('active');
+                    console.log('Menu opened');
+                }
+            }
+            
+            // Add click event to hamburger
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        console.log('Menu closed by outside click');
+                    }
+                }
+            });
+            
+            // Close menu when clicking menu links
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    console.log('Menu closed by link click');
+                });
+            });
         });
 
         // Header scroll effect
@@ -197,12 +246,25 @@
             });
         });
 
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
+        // Enhanced scroll effects
+        let ticking = false;
+        
+        function updateScrollEffects() {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = translateY(${scrolled * 0.5}px);
+            
+            // Subtle parallax effect for hero section
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = translateY(${scrolled * 0.3}px);
+            }
+            
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollEffects);
+                ticking = true;
             }
         });
     </script>
